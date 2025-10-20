@@ -1,32 +1,26 @@
-import datetime
+from datetime import datetime, timedelta
 
-# Part 1: Function to display the current date and time
 def display_current_datetime():
-    # Get the current date and time
-    current_datetime = datetime.datetime.now()
-    
-    # Format the current date and time as "YYYY-MM-DD HH:MM:SS"
-    current_date = current_datetime.strftime("%Y-%m-%d %H:%M:%S")
-    
-    # Print the current date and time
-    print("Current Date and Time:", current_date)
+    # Define current_date before using it
+    current_date = datetime.now()
+    print("Current date and time:", current_date.strftime("%Y-%m-%d %H:%M:%S"))
+    return current_date  # Return it if you want to reuse
 
-# Part 2: Function to calculate a future date
-def calculate_future_date():
-    # Ask the user to input a number of days
-    days_to_add = int(input("Enter the number of days to add to the current date: "))
-    
-    # Get the current date
-    current_date = datetime.datetime.now()
-    
-    # Calculate the future date by adding the number of days
-    future_date = current_date + datetime.timedelta(days=days_to_add)
-    
-    # Format and print the future date as "YYYY-MM-DD"
-    print("Future Date:", future_date.strftime("%Y-%m-%d"))
+def calculate_future_date(days_to_add: int):
+    # Calculate the future date after adding given days to the current date.
+    current_date = datetime.now()
+    future_date = current_date + timedelta(days=days_to_add)
+    print("Future date:", future_date.strftime("%Y-%m-%d"))  # Use %m for month, not %M
+    return future_date
 
-# Call Part 1 function to display current date and time
-display_current_datetime()
+def main():
+    # Part 1: Display current datetime
+    display_current_datetime()
+    
+    # Part 2: Prompt user and calculate future date
+    try:
+        days = int(input("Enter the number of days to add to the current date: "))
+        calculate_future_date(days)
+    except ValueError:
+        print("Invalid input! Please enter a valid integer.")
 
-# Call Part 2 function to calculate and display future date
-calculate_future_date()
