@@ -18,6 +18,4 @@ def calculate_future_date():
     formatted_future_date = future_date.strftime("%Y-%m-%d")
     print("Future date after adding", number_of_days, "days:", formatted_future_date)
 
-# Call the functions
-display_current_datetime()
-calculate_future_date()
+
